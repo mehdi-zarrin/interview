@@ -22,7 +22,7 @@ class DamageCalculator
 {
     const DAMAGE_RAND_FACTOR = 0.2;
 
-    public static function getDamage(HeroInterface $attacker, HeroInterface $defender)
+    public function getDamage(HeroInterface $attacker, HeroInterface $defender)
     {
         if ($attacker->getForce() < $defender->getForce()) {
             return 0;
@@ -43,15 +43,13 @@ class Fight
 
     public function makeFight(HeroInterface $attacker, HeroInterface $defender, DamageCalculator $damageCalculator)
     {
-        $damage = $damageCalculator::getDamage($attacker, $defender);
+        $damage = $damageCalculator->getDamage($attacker, $defender);
         $defender->setHealthPoints($defender->getHealthPoints()-$damage);
     }
 }
 
 class FightTest extends TestCase {
-    public function tearDown() {
-        Mockery::close();
-    }
+
     public function testMakeFight()
     {
         $damageCalculatorStub = $this->createMock(DamageCalculator::class);
