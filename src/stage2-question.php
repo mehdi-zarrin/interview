@@ -1,4 +1,5 @@
 <?php
+namespace App\Question;
 /*
 
 There is a code supporting calculation if a car is damaged.

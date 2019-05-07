@@ -1,25 +1,25 @@
 <?php
 
-	namespace App\User;
+	namespace App;
 
 	class User {
 
 		protected $firstName, $lastName, $email;
 
-		public function setFirstName($firstName): User
+		public function setFirstName(string $firstName): User
 		{
 			$this->firstName = $firstName;
 
 			return $this;
 		}
 
-		public function setLastName($lastName): User
+		public function setLastName(string $lastName): User
 		{
 			$this->lastName = $lastName;
 
 			return $this;
 		}
-		public function setEmail($email): User
+		public function setEmail(string $email): User
 		{
 			$this->email = $email;
 

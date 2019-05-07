@@ -1,4 +1,6 @@
 <?php
+
+namespace App\Answer;
 // There is a code supporting calculation if a car is damaged.
 // Now it should be extended to support calculating if a painting of car's exterior is damaged (this means, if a painting of any of car details is not OK - for example a door is scratched).
 
