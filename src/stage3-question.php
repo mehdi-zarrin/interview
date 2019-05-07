@@ -1,5 +1,5 @@
 <?php
-namespace App\Question;
+namespace App\Question\Something;
 /*
 Please take a look at the code below. We've got a class Fight, which implements a logic of a fight between two heroes.
 After the fight one of the hero may lose some health points.
@@ -48,14 +48,24 @@ class Fight
     }
 }
 
-class FightTest extends TestCase {
-
-    public function testMakeFight()
-    {
-        $damageCalculatorStub = $this->createMock(DamageCalculator::class);
-        $heroStub = $this->createMock(HeroInterface::class);
-        $fight = new Fight;
-        $fight->makeFight($heroStub, $heroStub, $damageCalculatorStub);
-
-    }
-}
+//class FightTest extends TestCase {
+//
+//    public function tearDown()
+//    {
+//        Mockery::close();
+//    }
+//
+//    public function testMakeFight()
+//    {
+//
+//        $attacker = Mockery::mock('HeroInterface');
+//        $attacker->shouldReceive('getHealthPoints')->once()->andReturn('getHealthPoints');
+//
+//        $defender = Mockery::mock('HeroInterface');
+//        $attacker->shouldReceive('setHealthPoints')->with(1)->andReturn('setHealthPoints');
+//
+//        $damageCalculator = Mockery::mock('DamageCalculator');
+//        $damageCalculator->shouldReceive('getDamage')->once()->with($attacker, $defender)->andReturn('calculated');
+//
+//    }
+//}
