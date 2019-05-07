@@ -41,17 +41,23 @@ class DamageCalculator
 class Fight
 {
 
-    public function makeFight(HeroInterface $attacker, HeroInterface $defender)
+    public function makeFight(HeroInterface $attacker, HeroInterface $defender, DamageCalculator $damageCalculator)
     {
-        $damage = DamageCalculator::getDamage($attacker, $defender);
+        $damage = $damageCalculator::getDamage($attacker, $defender);
         $defender->setHealthPoints($defender->getHealthPoints()-$damage);
     }
 }
 
-//class FightTest extends TestCase {
-//
-//    public function testMakeFight()
-//    {
-//        // implement the test
-//    }
-//}
+class FightTest extends TestCase {
+    public function tearDown() {
+        Mockery::close();
+    }
+    public function testMakeFight()
+    {
+        $damageCalculatorStub = $this->createMock(DamageCalculator::class);
+        $heroStub = $this->createMock(HeroInterface::class);
+        $fight = new Fight;
+        $fight->makeFight($heroStub, $heroStub, $damageCalculatorStub);
+
+    }
+}
