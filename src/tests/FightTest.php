@@ -54,10 +54,10 @@ class FightTest extends TestCase
     public function testMakeFight()
     {
         $attacker = Mockery::mock('HeroInterface');
-        $attacker->shouldReceive('getHealthPoints')->once()->andReturn('getHealthPoints');
+        $attacker->shouldReceive('getHealthPoints')->once()->andReturn(1);
 
         $defender = Mockery::mock('HeroInterface');
-        $attacker->shouldReceive('setHealthPoints')->with(1)->andReturn('setHealthPoints');
+        $attacker->shouldReceive('setHealthPoints')->with(1);
 
         $damageCalculator = Mockery::mock('DamageCalculator');
         $damageCalculator->shouldReceive('getDamage')->once()->with($attacker, $defender)->andReturn('calculated');
