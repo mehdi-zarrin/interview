@@ -25,10 +25,16 @@ abstract class CarDetail {
 // since Door is not paintable its implementing PaintableInterface and BrokableInterface
 class Door extends CarDetail implements BrokableInterface, PaintableInterface, DamagableInterface
 {
+    protected $hasScratch;
+    public function __construct(bool $isBroken, bool $hasScratch = false)
+    {
+        parent::__construct($isBroken);
+        $this->hasScratch = $hasScratch;
+    }
 
     public function isPaintingDamaged(): bool
     {
-        return true;
+        return $this->hasScratch;
     }
 
     public function isBroken(): bool
@@ -84,4 +90,4 @@ class Car
         return false;
     }
 }
-$car = new Car([new Door(false), new Tyre(false)]);
+$car = new Car([new Door(false, true), new Tyre(false)]);
