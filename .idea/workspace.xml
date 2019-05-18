@@ -5,9 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/interview.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/interview.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Live-after.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Live-after.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stage2-answer-2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/stage2-answer-2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/FightTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/FightTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/FightTest-Alireza.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,17 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Live-after.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/live-before.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="-1839">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -120,6 +112,12 @@
               <item name="Auto1" type="b2602c69:ProjectViewProjectNode" />
               <item name="Auto1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Auto1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Auto1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -279,8 +277,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Live-after.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+        <state relative-caret-position="-1839">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
