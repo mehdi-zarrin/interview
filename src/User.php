@@ -27,6 +27,6 @@
 		}
 
 		public function __toString() {
-			return $this->email;
+			return sprintf("%s %s<%s>", $this->firstName, $this->lastName, $this->email);
 		}
 	}

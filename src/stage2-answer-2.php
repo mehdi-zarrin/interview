@@ -1,15 +1,5 @@
 <?php
-namespace App\Answer\Second;
 
-/**
- * Please Note: there is another implementation of this which is more in tune with SOLID and uses
- * Interface Segregation. please checkout at: https://github.com/mehdi-zarrin/interview/blob/master/src/stage2-answer.php
- */
-
-/**
- * Interface PaintableInterface
- * @package App\Answer\Second
- */
 interface PaintableInterface {
     public function hasScratch(): bool;
 }
@@ -72,8 +62,11 @@ class Car
     {
         foreach ($this->details as $detail) {
 
-            if($detail instanceof PaintableInterface) {
-                return $this->isPaintingDamaged();
+            if(
+                $detail instanceof PaintableInterface &&
+                $this->isPaintingDamaged($detail)
+            ) {
+                return true;
             }
 
             if ($detail->isBroken()) {
@@ -90,9 +83,5 @@ class Car
     }
 }
 
-$car = new Car([new Door(true, true), new Tyre(false)]); // we pass a list of all details
-// ```
+$car = new Car([new Door(false, true), new Tyre(false)]); 
 
-// Expected result: an implemented code.
-
-// Note: you are allowed (and encouraged) to change anything in the existing code in order to make an implementation SOLID compliant

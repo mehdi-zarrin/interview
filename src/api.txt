@@ -1,0 +1,201 @@
+
+// Expected result: for every of 6 cases a payload, an URL of an endpoint, a status code and body of a response
+
+/*
+
+----> A POST request
+A) A seller "Delicious bananas LTD" (id=899) adds a lot of 'Red Dacca' (cultivar) bananas, planted at Costa Rica and harvested July 27, 2018 and a total weight of 1500 kg and succeed.
+
+----> A POST request with error response
+B) "Delicious bananas LTD" adds a lot of 'Red Dacca' (cultivar) bananas, planted at Costa Rica and harvested 27th July, 2018 and a total weight of 500 kg, but a minimum weight allowed is 1000 kg
+
+----> A PATCH request 
+C) "Delicious bananas LTD" changes harvesting date of created lot to June 14, 2018.
+
+----> A POST Request to create an auction
+D) "Delicious bananas LTD" starts an auction on 04 Sep 2018 on the same lot with a cost $1.20/kg and duration 1 day.
+
+----> A bid on aution ( A POST request )
+E) A buyer "German Retailer GmbH" (id=72) bids on the same lot with a price $1.21/kg
+
+----> A GET request on bids
+F) "Delicious bananas LTD" wants to see a list of bids on his lot
+
+----> A DELETE request on lots
+G) "Delicious bananas LTD" wants to remove sold lot
+
+*/
+
+/**
+* A
+*/
+ 
+
+
+/**
+* B
+**/ 
+POST /lots
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "userId": 899,
+  	"name": 'Red Dacca',
+  	"type": 1, 
+  	"country": 120,
+  	"harvestDate": '2018-08-27T15:43:00.000Z',
+  	"quantity": {
+  		"value": 500,
+  		"unit": "KG"
+  	}
+  }
+}
+
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+
+{
+  "errors": [
+    {
+      "status": "422",
+      "title":  "Invalid Attribute",
+      "detail": "Minimum Weight is 1000kg"
+    }
+  ]
+}
+
+/**
+* C
+**/
+PATCH /lots/1 HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "attributes": {
+      "harvestDate": "2018-07-14T15:43:00.000Z"
+    }
+  }
+}
+
+HTTP/1.1 204 No Content
+
+/**
+* D
+**/
+POST /auctions
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "lotId": 1,
+  	"duration": 1,
+  	"startDate": "2018-09-04T15:43:00.000Z",
+  	"price": {
+  		"amount" : 120,
+  		"currency": "USD"
+  	}
+  }
+}
+
+HTTP/1.1 201 Created
+Location: http://example.com/lots/1
+Content-Type: application/vnd.api+json
+{
+  "data": {
+    "lotId": 1,
+	"duration": 1,
+	"startDate": "2018-09-04T15:43:00.000Z",
+	"price": {
+		"amount" : 120,
+		"currency": "USD"
+	},
+    "links": {
+      "self": "http://example.com/auctions/1"
+    }
+  }
+}
+
+/**
+* E
+**/
+POST /bids
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+{
+  "data": {
+    "userId": 72,
+	"lotId": 1,
+	"auctionId": 1,
+	"price": {
+		"amount" : 121,
+		"currency": "USD"
+	}
+  }
+}
+
+HTTP/1.1 201 Created
+Location: http://example.com/lots/1
+Content-Type: application/vnd.api+json
+{
+  "data": {
+    "userId": 72,
+	"lotId": 1,
+	"auctionId": 1,
+	"price": {
+		"amount" : 121,
+		"currency": "USD"
+	},
+    "links": {
+      "self": "http://example.com/bids/1"
+    }
+  }
+}
+
+/**
+* F
+**/
+GET /bids
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+{
+  "data": {
+    "lotId": 1,
+  }
+}
+
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  "meta": {
+    "totalPages": 1
+  },
+  "data": [{
+    "userId" : 72,
+    "price": {
+		"amount" : 121,
+		"currency": "USD"
+	},
+  }],
+  "links": {
+    "self": "http://example.com/bids?page[number]=3&page[size]=1",
+    "first": "http://example.com/bids?page[number]=1&page[size]=1",
+    "prev": "http://example.com/bids?page[number]=2&page[size]=1",
+    "next": "http://example.com/bids?page[number]=4&page[size]=1",
+    "last": "http://example.com/bids?page[number]=13&page[size]=1"
+  }
+}
+
+/**
+* G
+**/
+
+DELETE /lot/1 HTTP/1.1
+Accept: application/vnd.api+json
+
+HTTP/1.1 204 No Content
